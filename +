@@ -4,14 +4,16 @@ import socket
 import keys
 import time
 
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+sock.bind((keys.UDP_IP, keys.UDP_PORT))
+
 class Tello:
     def __init__(self, ip, port):
         self.ip = ip
         self.port = port
         global sock
-        global receive_sock
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        sock.bind((keys.UDP_IP, keys.UDP_PORT))
         message = "command"
         sock.sendto(message.encode('utf-8'), (keys.UDP_IP, keys.UDP_PORT))
         time.sleep(2)
@@ -20,15 +22,18 @@ class Tello:
         sock.sendto(command.encode('utf-8'), (self.ip, self.port))
 
 
+# message = "command"
+# sock = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
+# sock.sendto(message.encode('utf-8'), (keys.UDP_IP, keys.UDP_PORT))
+# time.sleep(2)
+
 tello = Tello(keys.UDP_IP, keys.UDP_PORT)
+# tello.send_command("takeoff")
 
 while True:
     command = input("> ")
     tello.send_command(command)
     time.sleep(2)
 
-# while True:
-    # data, addr = sock.recvform(1024)
-    # print(data)
 
 
