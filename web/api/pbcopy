@@ -1,0 +1,47 @@
+#!/usr/bin/env python3.8
+
+import keys
+import time
+import tkinter as tk
+from classes import Tello, Gui
+
+tello = Tello(keys.UDP_IP, keys.UDP_PORT)
+
+# commands = ["command", "takeoff", "up 200",  "flip l", "land"]
+# command = ["command", "ap HIS hisWF.2017"]
+
+# def run():
+    # for c in commands:
+        # tello.send_command(c)
+        # time.sleep(2)
+
+root = tk.Tk()
+
+test_gui = Gui(root, 600,700)
+
+# button = tk.Button(root, text="run", font="Verdana 15", command=run)
+# button.pack()
+
+def command(x):
+    tello.send_command(x)
+    time.sleep(2)
+
+existingCommands = ["command", "takeoff", "land"]
+
+for b in existingCommands:
+    b = tk.Button(root, text=b, font="Verdana 15", command=command(b))
+    b.pack()
+
+
+root.mainloop()
+
+# while True:
+    # command = input("> ")
+    # tello.send_command(command)
+    # time.sleep(2)
+
+# while True:
+    # data, addr = sock.recvform(1024)
+    # print(data)
+
+

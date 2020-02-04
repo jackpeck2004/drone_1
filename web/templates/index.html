@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Giacomo Pasin - Tello SDK</title>
+    <link rel="stylesheet" href="/static/css/pure.css" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body class="container">
+    <h1>Tello SDK</h1>
+    <div id="start">
+      <input
+        class="pure-button pure-button-primary"
+        type="button"
+        value="Start"
+      />
+    </div>
+    <div class="input">
+      <input
+        id="command"
+        type="text"
+        name="Command"
+        placeholder="Enter command"
+      />
+      <input
+        id="button"
+        type="submit"
+        value="Send"
+        class="pure-button pure-button-primary"
+      />
+    </div>
+    <div class="previous_commands">
+      <h2>Previous Commands</h2>
+      <div class="commands">
+        <ul id="list"></ul>
+      </div>
+    </div>
+    <script src="/static/js/axios.js"></script>
+    <script src="/static/js/script.js"></script>
+  </body>
+</html>
